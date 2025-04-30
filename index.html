@@ -119,10 +119,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ccc; /* Placeholder for removed image */
     }
     .image-container.dark-mode {
       border-color: #3C2F2F;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .profile-info {
       flex-grow: 1;
@@ -233,7 +237,12 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       border-radius: 12px;
-      background: #ccc; /* Placeholder for removed image */
+    }
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
     }
     .bestseller {
       position: absolute;

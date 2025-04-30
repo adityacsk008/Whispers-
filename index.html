@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-Shirt & Shirt Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      padding: 0px;
+      margin: 0;
+      background: #F5F5DC;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background: #00CED1;
+      color: #3C2F2F;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #F5F5DC;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    nav.dark-mode {
+      background: #00CED1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    nav .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #3C2F2F;
+      text-shadow: 0 0 5px rgba(60, 47, 47, 0.2);
+      margin-left: 20px;
+    }
+    nav .logo.dark-mode {
+      color: #3C2F2F;
+      text-shadow: 0 0 5px rgba(60, 47, 47, 0.2);
+    }
+    .theme-toggle {
+      font-size: 32px;
+      cursor: pointer;
+      color: #3C2F2F;
+      transition: color 0.3s;
+      margin-right: 20px;
+    }
+    .theme-toggle.dark-mode {
+      color: #3C2F2F;
+    }
+    .theme-toggle::before {
+      content: "🔅";
+    }
+    .theme-toggle.dark-mode::before {
+      content: "🌜";
+    }
+    .welcome-section {
+      padding-top: 100px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .welcome-section h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      color: #3C2F2F;
+      margin-bottom: 20px;
+    }
+    .welcome-section h1.dark-mode {
+      color: #3C2F2F;
+    }
+    .welcome-section h1 span {
+      color: #FFD700;
+    }
+    .welcome-section p {
+      font-size: 2rem;
+      color: #3C2F2F;
+    }
+    .welcome-section p.dark-mode {
+      color: #3C2F2F;
+    }
+    .profile-section {
+      font-family: 'Roboto', sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .hero-image {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-container {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #D4C4A8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ccc; /* Placeholder for removed image */
+    }
+    .image-container.dark-mode {
+      border-color: #3C2F2F;
+    }
+    .profile-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .username {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #3C2F2F;
+    }
+    .username.dark-mode {
+      color: #3C2F2F;
+    }
+    .buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 120px;
+      font-size: 12px;
+    }
+    .follow-btn {
+      background-color: #FFD700;
+      color: #3C2F2F;
+    }
+    .follow-btn.dark-mode {
+      background-color: #3C2F2F;
+      color: #00CED1;
+    }
+    .message-btn {
+      background-color: #D4C4A8;
+      color: #3C2F2F;
+    }
+    .message-btn.dark-mode {
+      background-color: #3C2F2F;
+      color: #00CED1;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #3C2F2F;
+    }
+    .stats.dark-mode {
+      color: #3C2F2F;
+    }
+    .bio-section {
+      margin-top: 12px;
+    }
+    .bio {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #3C2F2F;
+    }
+    .bio.dark-mode {
+      color: #3C2F2F;
+    }
+    .link {
+      color: #FFD700;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 12px;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .link.dark-mode {
+      color: #3C2F2F;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .book-card {
+      background: #F5F5DC;
+      border: 1px solid #D4C4A8;
+      border-radius: 16px;
+      width: 350px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .book-card.dark-mode {
+      background: #00CED1;
+      border-color: #3C2F2F;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .book-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    .image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ccc; /* Placeholder for removed image */
+    }
+    .bestseller {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #FFD700;
+      color: #3C2F2F;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .bestseller.dark-mode {
+      background: #3C2F2F;
+      color: #00CED1;
+    }
+    .title {
+      font-weight: 600;
+      margin: 12px 0 6px;
+      font-size: 20px;
+      color: #3C2F2F;
+    }
+    .title.dark-mode {
+      color: #3C2F2F;
+    }
+    .author {
+      font-size: 14px;
+      color: #666;
+    }
+    .author.dark-mode {
+      color: #3C2F2F;
+    }
+    .rating {
+      font-size: 14px;
+      margin-top: 6px;
+      color: #333;
+    }
+    .rating.dark-mode {
+      color: #3C2F2F;
+    }
+    .price {
+      font-size: 16px;
+      margin-top: 6px;
+      color: #FFD700;
+      font-weight: 600;
+    }
+    .price.dark-mode {
+      color: #3C2F2F;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: #8B0000;
+      margin-left: 5px;
+    }
+    .old-price.dark-mode {
+      color: #3C2F2F;
+    }
+    .free-delivery {
+      font-size: 13px;
+      color: #3C2F2F;
+      margin-top: 6px;
+    }
+    .free-delivery.dark-mode {
+      color: #3C2F2F;
+    }
+    .book-card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center">
+      <span class="logo">Esthetic Whisper</span>
+      <span class="theme-toggle" onclick="toggleTheme()"></span>
+    </div>
+  </nav>
+
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h1>Welcome to <span>Our Store</span></h1>
+  </div>
+
+  <!-- Profile Section -->
+  <div class="profile-section">
+    <div class="profile-header">
+      <div class="hero-image">
+        <div class="image-container">"https://iili.io/3EBJq3G.png"</div>
+      </div>
+      <div class="profile-info">
+        <div class="username">_Esthetic.whisper</div>
+        <div class="buttons">
+          <button class="btn follow-btn" onclick="window.location.href='https://www.instagram.com/_esthetic.whisper/?hl=en'">Follow</button>
+          <button class="btn message-btn" onclick="window.location.href='https://www.instagram.com/_esthetic.whisper/?hl=en'">Message</button>
+        </div>
+        <div class="stats">
+          <div><strong>259</strong><br>Posts</div>
+          <div><strong>24K</strong><br>Followers</div>
+          <div><strong>3</strong><br>Following</div>
+        </div>
+        <div class="bio-section">
+          <div class="bio">𝙁𝙖𝙨𝙝𝙞𝙤𝙣 | 𝘼𝙚𝙨𝙩𝙝𝙚𝙩𝙞𝙘 | 𝙊𝙪𝙩𝙛𝙞𝙩'𝙨 ✨ 🏝</div>
+          <div class="bio">Fashion model</div>
+          <div class="bio">Elevating affordable fashion ✨</div>
+          <div class="bio">ᴅᴀɪʟʏ ᴏᴜᴛғɪᴛ ɪɴsᴘᴏ | Aesthetic Finds 🌴</div>
+          <div class="bio">📩 DM for collaborations & partnerships</div>
+          <div class="bio">⬇️ Shop my favorite looks ⬇️</div>
+          <a href="https://www.wishlink.com/esthetic.whisper" class="link">www.wishlink.com/esthetic.whisper + 1</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Container -->
+  <div class="container">
+    <a href="course-1.html" class="book-card-link">
+      <div class="book-card">
+        <div class="image-wrapper"></div>
+        <div class="title">Cool T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.6 (371) | ₹299 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Free delivery</div>
+      </div>
+    </a>
+
+    <a href="course-2.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Stylish Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4 (424) | ₹499 <span class="old-price">₹1499</span></div>
+        <div class="free-delivery">Only few left</div>
+      </div>
+    </a>
+
+    <a href="course-3.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.1 (84) | ₹349 <span class="old-price">₹899</span></div>
+        <div class="free-delivery">Only few left</div>
+      </div>
+    </a>
+
+    <a href="course-4.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.9 (924) | ₹599 <span class="old-price">₹1799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-5.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Graphic T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (324) | ₹399 <span class="old-price">₹1099</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-6.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (346) | ₹549 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-7.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.7 (344) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-8.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (654) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-9.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sports T-Shirt</div>
+        <div class="author">Polyester Blend</div>
+        <div class="rating">⭐ 3.9 (452) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-10.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Checked Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.9 (994) | ₹699 <span class="old-price">₹1999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-11.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">V-Neck T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 3.4 (194) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-12.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Denim Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 3.8 (494) | ₹799 <span class="old-price">₹2299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-13.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Polo T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (234) | ₹499 <span class="old-price">₹1499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-14.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Linen Shirt</div>
+        <div class="author">Pure Linen</div>
+        <div class="rating">⭐ 3.9 (424) | ₹999 <span class="old-price">₹2499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-15.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sleeveless T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.3 (324) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-16.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (74) | ₹599 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-17.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Hooded T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (329) | ₹499 <span class="old-price">₹1299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-18.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.5 (300) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-19.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.7 (500) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-20.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Graphic T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.6 (280) | ₹399 <span class="old-price">₹1099</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-21.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (400) | ₹549 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-22.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.7 (344) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-23.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (654) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-24.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sports T-Shirt</div>
+        <div class="author">Polyester Blend</div>
+        <div class="rating">⭐ 3.9 (452) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-25.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Checked Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.9 (994) | ₹699 <span class="old-price">₹1999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-26.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">V-Neck T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 3.4 (194) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-27.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Denim Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 3.8 (494) | ₹799 <span class="old-price">₹2299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-28.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Polo T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (234) | ₹499 <span class="old-price">₹1499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-29.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Linen Shirt</div>
+        <div class="author">Pure Linen</div>
+        <div class="rating">⭐ 3.9 (424) | ₹999 <span class="old-price">₹2499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-30.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sleeveless T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.3 (324) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-31.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (74) | ₹599 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-32.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Hooded T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (329) | ₹499 <span class="old-price">₹1299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-33.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.5 (300) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-34.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.7 (500) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-35.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Graphic T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.6 (280) | ₹399 <span class="old-price">₹1099</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-36.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (400) | ₹549 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-37.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.7 (344) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-38.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (654) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-39.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sports T-Shirt</div>
+        <div class="author">Polyester Blend</div>
+        <div class="rating">⭐ 3.9 (452) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-40.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Checked Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.9 (994) | ₹699 <span class="old-price">₹1999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-41.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">V-Neck T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 3.4 (194) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-42.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Denim Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 3.8 (494) | ₹799 <span class="old-price">₹2299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-43.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Polo T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (234) | ₹499 <span class="old-price">₹1499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-44.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Linen Shirt</div>
+        <div class="author">Pure Linen</div>
+        <div class="rating">⭐ 3.9 (424) | ₹999 <span class="old-price">₹2499</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-45.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sleeveless T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.3 (324) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-46.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (74) | ₹599 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-47.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Hooded T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.8 (329) | ₹499 <span class="old-price">₹1299</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-48.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.5 (300) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-49.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.7 (500) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-50.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Graphic T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.6 (280) | ₹399 <span class="old-price">₹1099</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-51.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Casual Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (400) | ₹549 <span class="old-price">₹1599</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-52.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Printed T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 4.7 (344) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-53.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Formal Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.8 (654) | ₹649 <span class="old-price">₹1899</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-54.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Sports T-Shirt</div>
+        <div class="author">Polyester Blend</div>
+        <div class="rating">⭐ 3.9 (452) | ₹299 <span class="old-price">₹799</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-55.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">Checked Shirt</div>
+        <div class="author">Pure Cotton</div>
+        <div class="rating">⭐ 4.9 (994) | ₹699 <span class="old-price">₹1999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+
+    <a href="course-56.html" class="book-card-link">
+      <div class="book-card">
+        <div class="bestseller">Bestseller</div>
+        <div class="image-wrapper"></div>
+        <div class="title">V-Neck T-Shirt</div>
+        <div class="author">Cotton Blend</div>
+        <div class="rating">⭐ 3.4 (194) | ₹349 <span class="old-price">₹999</span></div>
+        <div class="free-delivery">Limited Time Offers</div>
+      </div>
+    </a>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const nav = document.querySelector('nav');
+      const logo = document.querySelector('.logo');
+      const themeToggle = document.querySelector('.theme-toggle');
+      const welcomeSection = document.querySelector('.welcome-section');
+      const profileSection = document.querySelector('.profile-section');
+      const bookCards = document.querySelectorAll('.book-card');
+      const username = document.querySelector('.username');
+      const stats = document.querySelectorAll('.stats');
+      const bio = document.querySelectorAll('.bio');
+      const followBtn = document.querySelector('.follow-btn');
+      const messageBtn = document.querySelector('.message-btn');
+      const bestseller = document.querySelectorAll('.bestseller');
+      const title = document.querySelectorAll('.title');
+      const author = document.querySelectorAll('.author');
+      const rating = document.querySelectorAll('.rating');
+      const price = document.querySelectorAll('.price');
+      const oldPrice = document.querySelectorAll('.old-price');
+      const freeDelivery = document.querySelectorAll('.free-delivery');
+
+      body.classList.toggle('dark-mode');
+      nav.classList.toggle('dark-mode');
+      logo.classList.toggle('dark-mode');
+      themeToggle.classList.toggle('dark-mode');
+      welcomeSection.classList.toggle('dark-mode');
+      profileSection.classList.toggle('dark-mode');
+      bookCards.forEach(card => card.classList.toggle('dark-mode'));
+      username.classList.toggle('dark-mode');
+      stats.forEach(stat => stat.classList.toggle('dark-mode'));
+      bio.forEach(b => b.classList.toggle('dark-mode'));
+      followBtn.classList.toggle('dark-mode');
+      messageBtn.classList.toggle('dark-mode');
+      bestseller.forEach(b => b.classList.toggle('dark-mode'));
+      title.forEach(t => t.classList.toggle('dark-mode'));
+      author.forEach(a => a.classList.toggle('dark-mode'));
+      rating.forEach(r => r.classList.toggle('dark-mode'));
+      price.forEach(p => p.classList.toggle('dark-mode'));
+      oldPrice.forEach(op => op.classList.toggle('dark-mode'));
+      freeDelivery.forEach(fd => fd.classList.toggle('dark-mode'));
+    }
+  </script>
+</body>
+</html>
